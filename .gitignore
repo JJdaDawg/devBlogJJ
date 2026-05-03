@@ -1,41 +1,45 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
+# --- Dependencies ---
 /node_modules
 /.pnp
 .pnp.*
 .yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
 
-# testing
-/coverage
-
-# next.js
+# --- Next.js & Build ---
 /.next/
 /out/
-
-# production
 /build
+*.tsbuildinfo
+next-env.d.ts
 
-# misc
-.DS_Store
-*.pem
+# --- Velite (Critical) ---
+# Ignore the generated data and processed assets
+/.velite
+/public/static
 
-# debug
+# --- Environments & Secrets ---
+.env
+.env*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# --- Logs & Debugging ---
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.pnpm-debug.log*
+pnpm-debug.log*
+/coverage
+/.nyc_output
 
-# env files (can opt-in for committing if needed)
-.env*
+# --- OS & IDEs ---
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
 
-# vercel
+# --- Vercel ---
 .vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
