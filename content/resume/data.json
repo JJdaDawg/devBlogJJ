@@ -1,0 +1,26 @@
+{
+  "name": "Joshua Jones",
+  "location": "St. ThomasS, ON",
+  "contact": {
+    "email": "jrj2004@hotmail.ca",
+    "github": "https://github.com/JJdaDawg"
+  },
+  "education": [
+    {
+      "school": "Conestoga College",
+      "degree": "Software Engineering Technology (SET)",
+      "honors": "Distinction",
+      "start": "2023",
+      "end": "2026"
+    }
+  ],
+  "skills": ["C#, C++", "Reverse Engineering", "Systems Architecture", "Project Management"],
+  "projects": [
+    {
+      "title": "Urban Echo",
+      "description": "Dynamic Urban Traffic Simulator (DUTS) using Box2D and Avalonia.",
+      "tech": ["C#", "Avalonia", "Box2D"],
+      "link": "https://github.com/JJdaDawg/UrbanEcho"
+    }
+  ]
+}
