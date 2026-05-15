@@ -48,3 +48,4 @@ Thumbs.db
 
 # --- Vercel ---
 .vercel
+next.config.ts
