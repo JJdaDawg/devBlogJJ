@@ -1,32 +1,42 @@
 import { defineConfig, s, defineCollection } from 'velite'
 
-// Define the Blog collection
 const posts = defineCollection({
   name: 'Post',
-  pattern: 'blog/**/*.md', // Where your blog files live
+  pattern: 'blog/**/*.md',
   schema: s.object({
     title: s.string().max(100),
-    slug: s.slug('blog'), // Automatically generates /blog/my-post
+    slug: s.slug('blog'),
     date: s.isodate(),
     summary: s.string(),
-    content: s.markdown(), // Converts markdown to HTML
+    content: s.markdown(),
   })
 })
 
-// Define the Resume as a "single" object
 const resume = defineCollection({
   name: 'Resume',
-  pattern: 'resume/data.json', 
+  pattern: 'resume/data.json',
   single: true,
   schema: s.object({
     name: s.string(),
     location: s.string(),
+    contact: s.object({
+      email: s.string(),
+      github: s.string(),
+    }),
     education: s.array(s.object({
       school: s.string(),
       degree: s.string(),
-      honors: s.string().optional()
+      honors: s.string().optional(),
+      start: s.string().optional(),
+      end: s.string().optional(),
     })),
-    skills: s.array(s.string())
+    skills: s.array(s.string()),
+    projects: s.array(s.object({
+      title: s.string(),
+      description: s.string(),
+      tech: s.array(s.string()),
+      link: s.string().optional(),
+    })),
   })
 })
 

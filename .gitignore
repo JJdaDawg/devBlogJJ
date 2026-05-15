@@ -16,6 +16,11 @@ next-env.d.ts
 /.velite
 /public/static
 
+# --- User images ---
+# Don't commit anime/personal images dropped into public/images/, but keep the README
+/public/images/*
+!/public/images/README.md
+
 # --- Environments & Secrets ---
 .env
 .env*.local

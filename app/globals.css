@@ -1,8 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fff5fa;
+  --foreground: #2a1a3a;
+  --page-px: clamp(2.5rem, 6vw, 6rem);
+
+  --pastel-pink: #fbcfe8;
+  --pastel-rose: #fda4d4;
+  --pastel-lavender: #d8b4fe;
+  --pastel-sky: #bae6fd;
+  --pastel-mint: #bbf7d0;
+  --pastel-cream: #fef3c7;
+
+  --accent-pink: #ec4899;
+  --accent-purple: #a855f7;
+  --accent-sky: #38bdf8;
 }
 
 @theme inline {
@@ -10,17 +22,115 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --color-pastel-pink: var(--pastel-pink);
+  --color-pastel-rose: var(--pastel-rose);
+  --color-pastel-lavender: var(--pastel-lavender);
+  --color-pastel-sky: var(--pastel-sky);
+  --color-pastel-mint: var(--pastel-mint);
+  --color-pastel-cream: var(--pastel-cream);
+
+  --color-accent-pink: var(--accent-pink);
+  --color-accent-purple: var(--accent-purple);
+  --color-accent-sky: var(--accent-sky);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #1a0f2e;
+    --foreground: #f5e6ff;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Soft pastel gradient that sits behind everything */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(251, 207, 232, 0.55), transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(186, 230, 253, 0.5), transparent 45%),
+    radial-gradient(circle at 50% 90%, rgba(216, 180, 254, 0.45), transparent 50%),
+    linear-gradient(135deg, #fff5fa 0%, #f3e8ff 50%, #e0f2fe 100%);
+}
+
+@media (prefers-color-scheme: dark) {
+  body::before {
+    background:
+      radial-gradient(circle at 15% 20%, rgba(236, 72, 153, 0.25), transparent 45%),
+      radial-gradient(circle at 85% 15%, rgba(56, 189, 248, 0.2), transparent 45%),
+      radial-gradient(circle at 50% 90%, rgba(168, 85, 247, 0.25), transparent 50%),
+      linear-gradient(135deg, #1a0f2e 0%, #2a1a3a 50%, #0f1729 100%);
+  }
+}
+
+/* Glass card utility — translucent so the background image shows through */
+.glass {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 8px 32px rgba(168, 85, 247, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  .glass {
+    background: rgba(42, 26, 58, 0.55);
+    border: 1px solid rgba(216, 180, 254, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Soft floating blob — decorative anime-vibe shapes */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Sparkle utility for cute corners */
+.sparkle {
+  display: inline-block;
+  animation: sparkle-spin 4s linear infinite;
+}
+
+@keyframes sparkle-spin {
+  0%, 100% { transform: rotate(0deg) scale(1); opacity: 0.7; }
+  50% { transform: rotate(180deg) scale(1.2); opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.float-slow {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Placeholder for image slots — shows a soft gradient until image is added */
+.image-placeholder {
+  background:
+    linear-gradient(135deg, rgba(251, 207, 232, 0.6), rgba(216, 180, 254, 0.6), rgba(186, 230, 253, 0.6));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(168, 85, 247, 0.7);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  text-align: center;
+  padding: 1rem;
 }

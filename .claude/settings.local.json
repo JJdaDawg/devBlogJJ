@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"/: %{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(curl -s -o /dev/null -w \"/blog: %{http_code}\\\\n\" http://localhost:3000/blog)",
+      "Bash(curl -s -o /dev/null -w \"/resume: %{http_code}\\\\n\" http://localhost:3000/resume)",
+      "Bash(curl -s -o /dev/null -w \"/blog/building-with-velite: %{http_code}\\\\n\" http://localhost:3000/blog/building-with-velite)"
+    ]
+  }
+}
